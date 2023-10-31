@@ -1,15 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
+
+// import {sum, division, multiply} from './utils';
+// import {sum as secondSum} from './utils/log';
+// import lolKek from './utils/log';
+
+
+import {sum as threeSum, division as secondDivision, multiply as secondMultiply} from './utils/index';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <App />
-  </React.StrictMode>
+  // </React.StrictMode>
 );
+
+
+// console.log(threeSum(1,2));
+// console.log(secondDivision(1,2));
+// console.log(secondMultiply(1,2));
+// export const lola = "LOL";
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
