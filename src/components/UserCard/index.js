@@ -2,7 +2,7 @@ import styles from './styles.module.scss';
 
 const greetings = 'Hello';
 
-const USerCard = ({name, age, image}) => {
+const USerCard = ({name, age, image, children}) => {
 
     return (
         <div className={`${styles.wrapper} ${styles.background}`}>
@@ -10,9 +10,9 @@ const USerCard = ({name, age, image}) => {
             <h1 className={styles.name}>User name: {name}</h1>
             <h2 className={styles.age}>Age: {age}</h2>
 
-            <p>
-                {greetings}
-            </p>
+            {/*<div>*/}
+            {/*    {children}*/}
+            {/*</div>*/}
         </div>
     );
 };

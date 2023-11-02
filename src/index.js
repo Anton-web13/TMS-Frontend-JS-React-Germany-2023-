@@ -1,31 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './components/App/App';
-import reportWebVitals from './reportWebVitals';
+import {BrowserRouter} from "react-router-dom";
 
-// import {sum, division, multiply} from './utils';
-// import {sum as secondSum} from './utils/log';
-// import lolKek from './utils/log';
+import MainLayout from "./components/MainLayout";
 
+import Router from "./routers/Router";
 
-import {sum as threeSum, division as secondDivision, multiply as secondMultiply} from './utils/index';
+import './static/index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
-    <App />
-  // </React.StrictMode>
+    <BrowserRouter>
+        {/*<App />*/}
+        <MainLayout>
+            <Router />
+        </MainLayout>
+    </BrowserRouter>
 );
 
 
-// console.log(threeSum(1,2));
-// console.log(secondDivision(1,2));
-// console.log(secondMultiply(1,2));
-// export const lola = "LOL";
-
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
