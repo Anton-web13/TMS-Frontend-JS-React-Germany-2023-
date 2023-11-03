@@ -10,16 +10,29 @@ class CounterContainer extends Component{
             countValue: 0,
             multiplied: 0,
         }
+
+        console.log('Constructor initialisation');
     }
 
+    componentDidMount() {
+        console.log('Did Mount');
+    }
+
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        console.log('Should Component Update? true');
+        return true;
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('Did Update');
+    }
+
+    componentWillUnmount() {
+        console.log('Unmounted');
+    }
+
+
     handleIncrement = () => {
-        // this.setState({countValue: this.state.countValue + 1});
-
-        // this.setState({
-        //     countValue: this.state.countValue + 1,
-        //     multiplied: this.state.countValue * 10,
-        // });
-
         this.setState((previousState) => {
             const incrementedValue = previousState.countValue + 1;
             const multipliedValue = incrementedValue * 10;
@@ -38,11 +51,14 @@ class CounterContainer extends Component{
 
 
     render() {
+        console.log('Render');
+
         return <div>
             <Layout
+                handleReset={this.handleReset}
                 counterValue={this.state.countValue}
                 handleIncrement={this.handleIncrement}
-                handleReset={this.handleReset}
+                someObj={{a: 1, b: 'Hello'}}
             />
         </div>
     }
