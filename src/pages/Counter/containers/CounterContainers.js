@@ -18,10 +18,10 @@ class CounterContainer extends Component{
         console.log('Did Mount');
     }
 
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        console.log('Should Component Update? true');
-        return true;
-    }
+    // shouldComponentUpdate(nextProps, nextState, nextContext) {
+    //     console.log('Should Component Update? true');
+    //     return true;
+    // }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         console.log('Did Update');
