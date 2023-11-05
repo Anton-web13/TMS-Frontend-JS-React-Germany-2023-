@@ -2,8 +2,13 @@ import Header from "../../../../components/Header";
 import CounterView from "../CounterView";
 import UserCard from "../../../../components/UserCard";
 
-const Layout = ({counterValue, handleIncrement, handleReset, someValue}) => {
-    console.log(someValue.address.city);
+const Layout = ({
+                    counterValue,
+                    handleIncrement,
+                    handleReset,
+                    handleDecrement,
+                    isEven
+}) => {
     return (
         <div>
             <div style={{marginBottom: 25}}>
@@ -12,6 +17,8 @@ const Layout = ({counterValue, handleIncrement, handleReset, someValue}) => {
                     counterValue={counterValue}
                     handleIncrement={handleIncrement}
                     someObj={{a: 1, b: 'Hello'}}
+                    handleDecrement={handleDecrement}
+                    isEven={isEven}
                 />
             </div>
 

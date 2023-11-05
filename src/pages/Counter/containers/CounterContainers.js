@@ -1,4 +1,4 @@
-import {Component} from "react";
+import {Component, memo} from "react";
 import CounterView from "../components/CounterView";
 import Layout from "../components/Layout";
 
@@ -8,64 +8,51 @@ class CounterContainer extends Component{
 
         this.state = {
             countValue: 0,
-            multiplied: 0,
             isBlocked: false,
+            isEven: true,
         }
 
-        console.log('Constructor initialisation');
     }
-
-    componentDidMount() {
-        console.log('Did Mount');
-    }
-
-    // shouldComponentUpdate(nextProps, nextState, nextContext) {
-    //     console.log('Should Component Update? true');
-    //     return true;
-    // }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log('Did Update');
-        // console.log(prevState);
-        //
-        // if (this.state.countValue === 5 && prevState.countValue !== this.state.countValue) {
-        //     this.setState({isBlocked: true});
-        // }
+        const currentValue = this.state.countValue;
 
-        // if (this.state.countValue % 2 !== 0) {
-        //     alert("Some data fetching...")
-        // }
+        if (prevState.countValue !== currentValue) {
+            this.setState({isEven: currentValue % 2 === 0});
+        }
     }
-
-    componentWillUnmount() {
-        console.log(this.state.isBlocked);
-        console.log('Unmounted');
-    }
-
 
     handleIncrement = () => {
-        if (this.state.countValue < 5) {
-            this.setState((previousState) => {
-                const incrementedValue = previousState.countValue + 1;
-                const multipliedValue = incrementedValue * 10;
+        // if (this.state.countValue < 5) {
+        //     this.setState((previousState) => {
+        //         const incrementedValue = previousState.countValue + 1;
+        //
+        //         return {
+        //             countValue: incrementedValue,
+        //         }
+        //
+        //     })
+        // }
 
-                return {
-                    countValue: incrementedValue,
-                    multiplied: multipliedValue,
-                }
-
-            })
-        }
-
+        this.setState(({countValue: this.state.countValue + 1}));
     }
 
     handleReset = () => {
         this.setState({countValue: 0});
     }
 
+    handleDecrement = () => {
+        // const differnce = this.state.countValue - 6;
+        // this.setState(({countValue: differnce < 0 ? 0 : differnce}));
+
+        if (this.state.countValue > 0) {
+            this.setState(({countValue: this.state.countValue - 1}));
+        }
+    }
 
     render() {
-        console.log('Render');
+        const { state, handleReset, handleIncrement, handleDecrement} = this;
+        const {countValue, isEven} = state;
 
         const user = {
             name: 'Alex',
@@ -76,11 +63,13 @@ class CounterContainer extends Component{
 
         return <div>
             <Layout
-                handleReset={this.handleReset}
-                counterValue={this.state.countValue}
-                handleIncrement={this.handleIncrement}
+                handleReset={handleReset}
+                counterValue={countValue}
+                handleIncrement={handleIncrement}
                 someObj={{a: 1, b: 'Hello'}}
                 someValue={user}
+                handleDecrement={handleDecrement}
+                isEven={isEven}
             />
         </div>
     }

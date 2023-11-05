@@ -48,8 +48,6 @@ import * as PropTypes from "prop-types";
 const greetings = 'Hello';
 
 function USerCard({name, age, image, someObject}) {
-    console.log('USer Cars Rendered');
-
     return (
         <div className={`${styles.wrapper} ${styles.background}`}>
             <img src={image} alt={"Woman ALL"} width={150} height={150}/>
