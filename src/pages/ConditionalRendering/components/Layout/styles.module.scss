@@ -1,0 +1,10 @@
+.box {
+  width: 50vw;
+  height: 50vw;
+  margin: 0 auto;
+  border: 2px dashed black ;
+}
+
+.blurFilter {
+  filter: blur(15px);
+}
