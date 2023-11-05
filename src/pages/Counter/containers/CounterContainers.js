@@ -1,5 +1,5 @@
 import {Component, memo} from "react";
-import CounterView from "../components/CounterView";
+import CounterView from "../../../components/CounterView";
 import Layout from "../components/Layout";
 
 class CounterContainer extends Component{
@@ -34,7 +34,9 @@ class CounterContainer extends Component{
         //     })
         // }
 
-        this.setState(({countValue: this.state.countValue + 1}));
+        this.setState(({countValue: this.state.countValue + 1}), () => {
+            alert('Hello!')
+        });
     }
 
     handleReset = () => {

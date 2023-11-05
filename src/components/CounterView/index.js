@@ -35,10 +35,10 @@ CounterView.propTypes = {
     counterValue: PropTypes.number.isRequired,
     handleIncrement: PropTypes.func.isRequired,
     handleReset: PropTypes.func.isRequired,
-    someObj: PropTypes.shape({
-        a: PropTypes.number,
-        b: PropTypes.string,
-    })
+    // someObj: PropTypes.shape({
+    //     a: PropTypes.number,
+    //     b: PropTypes.string,
+    // })
 
 }
 

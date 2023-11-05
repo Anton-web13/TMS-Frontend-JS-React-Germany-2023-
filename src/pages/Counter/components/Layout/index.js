@@ -1,5 +1,5 @@
 import Header from "../../../../components/Header";
-import CounterView from "../CounterView";
+import CounterView from "../../../../components/CounterView";
 import UserCard from "../../../../components/UserCard";
 
 const Layout = ({
