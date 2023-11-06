@@ -1,66 +1,46 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useCallback} from "react";
 
 import CounterView from "../../../components/CounterView";
+import {useCounter} from "../../../hooks";
 
 const FunctionalCounterCountainer = () => {
-    // const [counterState, setcounterState] = useState({
-    //     countValue: 0,
-    //     x: 'sertsertse',
-    // });
-    //
-    // console.log(counterState);
-    //
-    // const handleIncrement = () => {
-    //     setcounterState({
-    //         ...counterState,
-    //         countValue: counterState.countValue + 1
-    //     })
-    // }
-    //
-    // const handleDecrement = () => {
-    //     // setCounterValue((state) => ({
-    //     //     countValue: state.countValue - 1,
-    //     // }));
-    //
-    //     setcounterState((state) => {
-    //         return {
-    //             ...state,
-    //             countValue: state.countValue - 1,
-    //         }
-    //     });
-    // }
+    // const {
+    //     countValue,
+    //     handleIncrement,
+    //     handleDecrement,
+    //     handleReset
+    // } = useCounter(0);
 
-    const [count, setCount] = useState(0);
-    const [someValue, setSomeValue] = useState(false);
-
-
-    const handleIncrement = () => {
-        setCount((prevState) => {
-
-            return prevState + 1;
-        });
-    }
-
-    const handleDecrement = () => {
-        setCount(count - 1);
-    }
-
-    const handleReset = () => {
-        setCount(0);
-    }
+    const [countValue, setContValue] = useState(0);
+    const [date, setDate] = useState(new Date().getSeconds);
 
     useEffect(() => {
-        console.log('Did mount')
+        let interval = setInterval(() => {
+            setDate(new Date().getSeconds);
+        }, 1000);
+
+        return () => {
+            clearInterval(interval);
+        }
     }, [])
 
-    useEffect(() => {
-        setSomeValue(!someValue);
-    }, [count])
+    const handleIncrement = () => {
+        setContValue(countValue + 1);
+    };
 
-    console.log(someValue);
+    const handleDecrement = () => {
+        setContValue(countValue - 1);
+    };
+
+    const handleReset = () => {
+        setContValue(0);
+    };
+
+    console.log(date)
+
 
     return <CounterView
-        counterValue={count}
+        counterValue={countValue}
         handleIncrement={handleIncrement}
         handleDecrement={handleDecrement}
         handleReset={handleReset}

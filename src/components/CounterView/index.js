@@ -10,6 +10,8 @@ const CounterView = ({
          handleDecrement,
          isEven
 }) => {
+
+    console.log("Counter Render")
     return (
         <div className={styles.wrapper} style={{background: isEven ? 'red' : 'green'}}>
             <div className={styles.display}>{counterValue}</div>
