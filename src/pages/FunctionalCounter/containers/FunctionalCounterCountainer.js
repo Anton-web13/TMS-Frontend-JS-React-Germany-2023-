@@ -11,12 +11,18 @@ const FunctionalCounterCountainer = () => {
     //     handleReset
     // } = useCounter(0);
 
-    const [countValue, setContValue] = useState(0);
-    const [date, setDate] = useState(new Date().getSeconds);
+    // const [countValue, setContValue] = useState(0);
+    const {countValue,
+        handleIncrement,
+        handleDecrement,
+        handleReset,
+    } = useCounter(0);
+
+    const [date, setDate] = useState(new Date().getSeconds());
 
     useEffect(() => {
         let interval = setInterval(() => {
-            setDate(new Date().getSeconds);
+            setDate(new Date().getSeconds());
         }, 1000);
 
         return () => {
@@ -24,19 +30,29 @@ const FunctionalCounterCountainer = () => {
         }
     }, [])
 
-    const handleIncrement = () => {
-        setContValue(countValue + 1);
-    };
+    // const handleIncrement = useCallback( () => {
+    //     setContValue(countValue + 1);
+    // }, [countValue]);
 
-    const handleDecrement = () => {
-        setContValue(countValue - 1);
-    };
+    // const handleIncrement = useCallback( () => {
+    //     setContValue((state) => state + 1);
+    // }, []);
 
-    const handleReset = () => {
-        setContValue(0);
-    };
+    // const handleIncrement = () => {
+    //     setContValue(countValue + 1);
+    // };
 
-    console.log(date)
+    // const handleDecrement = () => {
+    //     setContValue(countValue - 1);
+    // };
+
+
+    //
+    // const handleReset = () => {
+    //     setContValue(0);
+    // };
+
+    // console.log(date);
 
 
     return <CounterView

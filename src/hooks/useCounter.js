@@ -1,23 +1,23 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState, useCallback} from "react";
 
 const useCounter = (initialValue, trackCountChanges = false) => {
     const [countValue, setContValue] = useState(initialValue);
 
-    const handleIncrement = () => {
-        setContValue(countValue + 1);
-    };
+    const handleIncrement = useCallback(() => {
+        setContValue((state) => state + 1);
+    }, []);
 
-    const handleDecrement = () => {
-        setContValue(countValue - 1);
-    };
+    const handleDecrement = useCallback(() => {
+        setContValue((state) => state - 1);
+    }, []);
 
-    const handleReset = () => {
+    const handleReset = useCallback(() => {
         setContValue(0);
-    };
+    }, []);
 
-    const handleAddAmount = (amount) => {
-        setContValue(countValue + amount);
-    }
+    const handleAddAmount = useCallback((amount) => {
+        setContValue((state) => state + amount);
+    }, []);
 
     useEffect(() => {
         if (trackCountChanges) {
