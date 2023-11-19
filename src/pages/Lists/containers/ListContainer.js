@@ -1,12 +1,25 @@
-import {Fragment, useState} from "react";
+import {Fragment, useCallback, useState} from "react";
 import Layout from "../components/Layout";
 import {v4 as uuid} from 'uuid';
 import {cloneDeep} from "lodash";
+import {random} from "lodash";
+import {calcAverage} from "../../../utils/calcAverage";
+
 
 // const numbers = [1,2,3,4,5];
 
+// const usersList = Array.from({length: 5000}, () => {
+//     return {
+//         id: uuid(),
+//         name: 'Alex',
+//         age: new Date().getMilliseconds(),
+//         isBlocked: false,
+//     }
+// })
+
 const ListContainer = () => {
     const [users, setUsers] = useState([]);
+
     // return <div style={{padding: 25}}>
     //     {numbers.map((number, index) => {
     //         return (
@@ -15,12 +28,13 @@ const ListContainer = () => {
     //     })}
     // </div>;
 
-    const handleAddUser = () => {
+
+    const handleAddUser = useCallback(() => {
 
         const newUser = {
             id: uuid(),
             name: 'Alex',
-            age: new Date().getMilliseconds(),
+            age: random(1,80, false),
             isBlocked: false,
         };
 
@@ -28,30 +42,40 @@ const ListContainer = () => {
         // stateCopy.push(newUser);
         // setUsers(stateCopy);
 
-        setUsers([...users, newUser]);
-    }
+        setUsers((state) => [...state, newUser])
 
-    const handleRemove = (id) => {
-        const usersCopy = [...users];
-        const userIndexToRemove = usersCopy.findIndex((user) => user.id === id)
+        // setUsers([...users, newUser]);
+    }, [])
 
-        usersCopy.splice(userIndexToRemove, 1);
+    const handleRemove = useCallback((id) => {
+        setUsers((state) => {
+            const usersCopy = cloneDeep(state);
+            const userIndexToRemove = usersCopy.findIndex((user) => user.id === id)
+            usersCopy.splice(userIndexToRemove, 1);
 
-        setUsers(usersCopy);
-    }
+            return usersCopy;
+        })
 
-    const handleBlockUser = (id) => {
+    }, [])
+
+    const handleBlockUser = useCallback((id) => {
         // const usersCopy = [...users];
-        const usersCopy = cloneDeep(users);
 
-        const foundUser = usersCopy.find((user) => user.id === id);
 
-        console.log(users);
-        console.log(usersCopy);
+        setUsers((state) => {
+            const usersCopy = cloneDeep(state);
 
-        foundUser.isBlocked = true;
-        setUsers(usersCopy);
-    }
+            const foundUser = usersCopy.find((user) => user.id === id);
+
+            console.log(users);
+            console.log(usersCopy);
+
+            foundUser.isBlocked = true;
+
+            return usersCopy;
+        })
+
+    }, [])
 
 
     return <Layout
@@ -59,6 +83,7 @@ const ListContainer = () => {
         handleAddUser={handleAddUser}
         handleRemove={handleRemove}
         handleBlockUser={handleBlockUser}
+        // averageUserAge={averageUserAge}
     />;
 };
 

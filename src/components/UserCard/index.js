@@ -47,7 +47,17 @@ import * as PropTypes from "prop-types";
 
 const greetings = 'Hello';
 
-function USerCard({id, name, age, image, isBlocked, onDelete, onBlock}) {
+function USerCard({
+                      id,
+                      name,
+                      age,
+                      image,
+                      isBlocked,
+                      onDelete,
+                      onBlock,
+                      userDetails,
+}) {
+    console.log(userDetails);
     return (
         <div className={`${styles.wrapper} ${styles.background}`}
              style={{background: isBlocked ? 'red' : "white"}}
@@ -58,7 +68,7 @@ function USerCard({id, name, age, image, isBlocked, onDelete, onBlock}) {
             <h2 className={styles.age}>Age: {age}</h2>
 
             <button onClick={() => onDelete(id)}>Delete</button>
-            <button onClick={onBlock}>Block User!</button>
+            <button onClick={() => onBlock(id)}>Block User!</button>
 
             {/*<div>*/}
             {/*    {children}*/}
