@@ -1,0 +1,71 @@
+import {Fragment, useState} from "react";
+import Layout from "../components/Layout";
+import {v4 as uuid} from 'uuid';
+import {cloneDeep} from "lodash";
+
+// const numbers = [1,2,3,4,5];
+
+const ListContainer = () => {
+    const [users, setUsers] = useState([]);
+    // return <div style={{padding: 25}}>
+    //     {numbers.map((number, index) => {
+    //         return (
+    //             <Fragment key={index}>{number}</Fragment>
+    //         )
+    //     })}
+    // </div>;
+
+    const handleAddUser = () => {
+
+        const newUser = {
+            id: uuid(),
+            name: 'Alex',
+            age: new Date().getMilliseconds(),
+            isBlocked: false,
+        };
+
+        // const stateCopy = [...users];
+        // stateCopy.push(newUser);
+        // setUsers(stateCopy);
+
+        setUsers([...users, newUser]);
+    }
+
+    const handleRemove = (id) => {
+        const usersCopy = [...users];
+        const userIndexToRemove = usersCopy.findIndex((user) => user.id === id)
+
+        usersCopy.splice(userIndexToRemove, 1);
+
+        setUsers(usersCopy);
+    }
+
+    const handleBlockUser = (id) => {
+        // const usersCopy = [...users];
+        const usersCopy = cloneDeep(users);
+
+        const foundUser = usersCopy.find((user) => user.id === id);
+
+        console.log(users);
+        console.log(usersCopy);
+
+        foundUser.isBlocked = true;
+        setUsers(usersCopy);
+    }
+
+
+    return <Layout
+        users={users}
+        handleAddUser={handleAddUser}
+        handleRemove={handleRemove}
+        handleBlockUser={handleBlockUser}
+    />;
+};
+
+export default ListContainer;
+
+// C - create;  POST
+// R - read;    GET
+// U - update;  PUT/PATCH
+// D - delete;  DELETE
+

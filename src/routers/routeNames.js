@@ -4,4 +4,5 @@ export const ROUTE_NAMES = {
     FUNCTIONAL_COUNTER: '/functional_counter',
     CONDITIONAL_RENDERING: '/conditional-rendering',
     ANOTHER_PAGE: '/another-page',
+    LISTS: '/lists',
 }
