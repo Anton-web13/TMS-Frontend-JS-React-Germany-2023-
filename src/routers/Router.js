@@ -7,6 +7,7 @@ import ConditionalRenderingContainer from "../pages/ConditionalRendering/contain
 import FunctionalCounterCountainer from "../pages/FunctionalCounter/containers/FunctionalCounterCountainer";
 import HomePageContainers from "../pages/Home/containers/HomePageContainers";
 import ListContainer from "../pages/Lists/containers/ListContainer";
+import CountersManagerContainer from "../pages/CountersManager/containers/CountersManagerContainer";
 
 import {ROUTE_NAMES} from "./routeNames";
 
@@ -18,6 +19,7 @@ const Router = () => {
             <Route path={ROUTE_NAMES.CONDITIONAL_RENDERING} element={<ConditionalRenderingContainer />} />
             <Route path={ROUTE_NAMES.FUNCTIONAL_COUNTER} element={<FunctionalCounterCountainer />} />
             <Route path={ROUTE_NAMES.LISTS} element={<ListContainer />} />
+            <Route path={ROUTE_NAMES.COUNTERS_MANAGER} element={<CountersManagerContainer />} />
 
             <Route path='*' element={<h1>404 Not Found</h1>} />
         </Routes>

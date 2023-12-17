@@ -1,6 +1,4 @@
-export {sum} from './sum';
-export {division} from './division';
-export {multiply} from './multiply';
+export {isEven} from './iseven';
 
 // export {
 //     sum,

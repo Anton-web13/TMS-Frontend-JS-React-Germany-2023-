@@ -5,4 +5,5 @@ export const ROUTE_NAMES = {
     CONDITIONAL_RENDERING: '/conditional-rendering',
     ANOTHER_PAGE: '/another-page',
     LISTS: '/lists',
+    COUNTERS_MANAGER: '/counters-manager',
 }

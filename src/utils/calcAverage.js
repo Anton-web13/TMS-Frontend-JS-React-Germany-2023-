@@ -9,4 +9,3 @@ export const calcAverage = (users) => {
         return result + age;
     }, 0) / usersAmount;
 }
-
