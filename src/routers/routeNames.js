@@ -6,4 +6,5 @@ export const ROUTE_NAMES = {
     ANOTHER_PAGE: '/another-page',
     LISTS: '/lists',
     COUNTERS_MANAGER: '/counters-manager',
+    FORMS: '/forms',
 }
